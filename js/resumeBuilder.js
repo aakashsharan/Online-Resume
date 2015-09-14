@@ -113,7 +113,7 @@ var education = {
 	]
 }
 
-function nameChanger(oldName) {
+bio.nameChanger =  function(oldName) {
 
     var namesArray = oldName.trim().split(" ");
     var nameFirst = namesArray[0];
@@ -137,7 +137,7 @@ function nameChanger(oldName) {
 
 bio.display = function() {
     "use strict";
-	var myName = nameChanger("Aakash Sharan");
+	var myName = bio.nameChanger("Aakash Sharan");
 
 	var formattedName = HTMLheaderName.replace("%data%", myName);
 	var formattedRole = HTMLheaderRole.replace("%data%", "web developer");
@@ -225,7 +225,7 @@ $(document).click(function(loc) {
 });
 
 
-function locationizer(work_obj) {
+work.locationizer = function (work_obj) {
     var locationArray = [];
     for (var job in work_obj.jobs) {
 
@@ -239,7 +239,7 @@ function locationizer(work_obj) {
 
 
 
-function inName(name) {
+bio.inName = function(name) {
 	nameArray = name.trim().split(" ");
 	// console.log(nameArray);
 	nameSecond= nameArray[1].toUpperCase();
@@ -279,7 +279,7 @@ projects.display = function() {
 
 }
 
- education.display = function() {
+education.display = function() {
 
  	for(var school in education.schools) {
  		$("#education").append(HTMLschoolStart);
@@ -337,7 +337,7 @@ projects.display = function() {
  }
  // lets connect
 
-function showContactDetails(bio) {
+bio.showContactDetails = function() {
 	if (typeof bio.contacts.mobile !== "undefined") {
 		var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
 		$("#footerContacts").append(formattedMobile);
@@ -364,11 +364,11 @@ function showContactDetails(bio) {
 	}
 }
 
-
+bio.inName(bio.name);
 bio.display();
 work.display();
 projects.display();
 education.display();
-showContactDetails(bio);
+bio.showContactDetails();
 
 $("#mapDiv").append(googleMap);
